@@ -1,7 +1,70 @@
 ---
+import '@fontsource/inter';
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+
 const { frontmatter } = Astro.props;
 ---
-<meta charset="utf-8" />
-<h1>{frontmatter.title}</h1>
-<p>Written by {frontmatter.author}</p>
-<slot />
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+
+        <style is:global define:vars={{ imageUrl: `url(${frontmatter.image.url})` }}>
+            body {
+                background-image: var(--imageUrl);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                min-height: 100vh;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 80ch;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #main-blog {
+                padding-top: 250px;
+                color: #D3D2D5;
+            }
+
+            #main-blog h1 {
+                font-weight: bold;
+                font-size: 3rem;
+            }
+
+            #pudDate {
+                font-style: italic;
+                display: inline;
+            }
+
+            #author {
+                display: inline;
+            }
+
+            .underline {
+                text-decoration: underline;
+            }
+
+            #main-blog a {
+                color: white;
+                font-weight: bold;
+            }
+        </style>
+
+    </head>
+    <body>
+        <Header />
+        <div id="main-blog">
+            <h1>{frontmatter.title}</h1>
+            <p id="pudDate">Published on {frontmatter.pubDate} - </p>
+            <p id="author">Written by <span class="underline">{frontmatter.author}</span></p>
+            
+            <slot />
+        </div>
+        <Footer />
+    </body>
+</html> 
