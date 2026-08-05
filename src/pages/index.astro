@@ -22,12 +22,7 @@ const pageTitle = "Tuto Astro de Matt";
 
 		<Footer />
 		 <script>
-			const menu = document.querySelector('.menu');
-
-			menu?.addEventListener('click', () => {
-			const isExpanded = menu.getAttribute('aria-expanded') === 'true';
-			menu.setAttribute('aria-expanded', `${!isExpanded}`);
-			});
+			import '../scripts/menus.js';
   		</script>
 	</body>
 </html>
