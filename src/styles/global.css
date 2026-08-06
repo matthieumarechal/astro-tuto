@@ -1,6 +1,13 @@
+:root {
+  --gris-base: #1D1E24;
+  --gris-clair: #D3D2D5;
+  --lila: #c6a3cf;
+}
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
+  background-color: var(--gris-base);
 }
 
 body {
@@ -9,6 +16,8 @@ body {
   max-width: 80ch;
   padding: 1rem;
   line-height: 1.5;
+  background-color: var(--gris-base);
+  color: var(--gris-clair);
 }
 
 * {
@@ -18,6 +27,21 @@ body {
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
+  color: var(--gris-clair);
+}
+
+ul, p {
+  color: #D3D2D5;
+}
+
+/* LINKS DESIGN */
+
+ul a {
+  color: var(--lila);
+}
+
+ul a:hover {
+  color: var(--gris-clair);
 }
 
 /* nav styles */
@@ -50,7 +74,8 @@ h1 {
 
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: #ff9776;
+  background-color: #c6a3cf;
+  color: var(--gris-base);
 }
 
 :has(.menu[aria-expanded="true"]) .nav-links {
