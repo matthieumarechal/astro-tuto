@@ -1,64 +1,19 @@
 ---
 import '@fontsource/inter';
 import BaseLayout from './BaseLayout.astro';  
+import { imageConfig } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 const { frontmatter } = Astro.props;
 ---
         
 <BaseLayout pageTitle={frontmatter.title}>
 
-<style is:global define:vars={{ imageUrl: `url(${frontmatter.image.url})` }}>
-    html {
-        background-color: #1D1E24;
-    }
-    
-    body {
-        background-image: var(--imageUrl);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 80ch;
-        font-family: 'Inter', sans-serif;
-    }
-
-    #main-blog {
-        color: #D3D2D5;
-    }
-
-    #main-blog h1 {
-        font-weight: bold;
-        font-size: 3rem;
-    }
-
-    #pudDate {
-        font-style: italic;
-        display: inline;
-    }
-
-    #author {
-        display: inline;
-    }
-
-    h1 {
-        color: #D3D2D5;
-    }
-
-    .underline {
-        text-decoration: underline;
-    }
-
-    #main-blog a {
-        color: white;
-        font-weight: bold;
-    }
-</style>
-
     <div id="main-blog">
+        <img src={frontmatter.image.url} width="100%"  alt={frontmatter.image.alt} />
         <p id="pudDate">Published on {frontmatter.pubDate.toString().slice(0,10)} - </p>
         <p id="author">Written by <span class="underline">{frontmatter.author}</span></p>
+        <p><em>{frontmatter.description}</em></p>
         
         <slot />
     </div>
